@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ASICS.com</title>
+    <link rel="stylesheet" href="w3.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #fcfcfe;
+            color: #111;
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #111;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #383838;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #675d5d;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #000000;
+        }
+        
+        .header-icons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .header-icons div {
+            margin-left: 20px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #585353;
+            color: white;
+            font-size: 12px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to right, #0a0e41,#0a0e41 );
+            color: white;
+            padding: 70px 20px;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #ffffff;
+        }
+        
+        /* Products Section */
+        .products {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color:#0a0e41;
+        }
+        
+        .filters {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .search-box {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            width: 300px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-box input {
+            border: none;
+            outline: none;
+            margin-left: 10px;
+            width: 100%;
+            font-size: 16px;
+        }
+        
+        .filter-options {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .filter-options select {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            background-color: white;
+            cursor: pointer;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-image {
+            height: 200px;
+            width:255px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .product-info p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .product-price {
+            font-size: 20px;
+            font-weight: 700;
+            color:black;
+            margin-bottom: 15px;
+        }
+        
+        .add-to-cart {
+            width: 100%;
+            padding: 10px;
+            background-color:#0a0e41;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #343333;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #12194e;
+            color: white;
+            padding: 50px 20px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color:#ffffff;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #fffcfc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #ffffff;
+        }
+TR  
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: #3e3c3c;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ffffff;
+            color: #ccc;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 15px;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+            }
+            
+            nav ul li {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .filters {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .search-box {
+                width: 120%;
+                height:20%;
+            }
+            
+            .filter-options {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+        
+        /* Cart Modal */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 350px;
+            height: 100%;
+            background-color: white;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            overflow-y: auto;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .cart-modal.open {
+            transform: translateX(0);
+            display: block;
+        }
+        
+        .cart-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        .cart-items {
+            padding: 20px;
+        }
+        
+        .cart-item {
+            display: flex;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .cart-item-details {
+            flex: 1;
+        }
+        
+        .cart-item-details h4 {
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-price {
+            color:#0a0e41;
+            font-weight: 700;
+        }
+        
+        .cart-item-remove {
+            color:#0a0e41;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cart-total {
+            padding: 20px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 18px;
+        }
+        
+        .checkout-btn {
+            display: block;
+            width: calc(100% - 40px);
+            margin: 0 20px 20px;
+            padding: 15px;
+            background-color:#0a0e41;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+        
+        .overlay.open {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo"><B><I>ASICS</I></B><span>.</span></a>
+            <nav>
+                <ul>
+            
+                    <li><a href="#"><i>NEW RELEASES</i></a></li>
+                    <li><a href="#"><i>MEN</i></a></li>
+                    <li><a href="#"><i>WOMEN</i></a></li>
+                    <li><a href="#"><i>KIDS</i></a></li>
+                    <li><a href="#"><i>SALE</i></a></li>
+
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <div>
+                    <i class="fas fa-search"></i>
+                </div>
+                <div>
+                    <i class="fas fa-user"></i>
+                </div>
+                <div id="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+
+            <h1><i><b>Healthy Soul In A Healthy Body.</b></i></h1>
+            <p><b><i>Kobe, Japan, by Kihachiro Onitsuka.</i></b></p>
+            <a href="#" class="btn"><b><i>Shop Now</i></b></a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <h2 class="section-title"><b><i>Featured Products</b></i></h2>
+        
+        <div class="filters">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search for products...">
+            </div>
+            
+            <div class="filter-options">
+                <select>
+                    <option>All Categories</option>
+                    <option>Running</option>
+                    <option>Basketball</option>
+                    <option>Lifestyle</option>
+                </select>
+                
+                <select>
+                    <option>Sort by: Featured</option>
+                    <option>Price: Low to High</option>
+                    <option>Price: High to Low</option>
+                    <option>Newest First</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://www.asics.co.in/media/catalog/product/1/0/1013a170_100_sr_rt_glb.jpg?optimize=high&bg-color=255%2C255%2C255&fit=cover&height=1200&width=960&auto=webp&format=pjpg" alt="Nike Air Max shoes in red and white colorway">
+                </div>
+                <div class="product-info">
+                    <h3>MEGABLAST</h3>
+                    <p>Unisex Running Shoes</p>
+                    <div class="product-price">MRP- 23,999</div>
+                    <button class="add-to-cart" data-id="1" data-name="ASICS-MEGABLAST" data-price="150" data-image="https://www.asics.co.in/media/catalog/product/1/0/1013a170_100_sr_rt_glb.jpg?optimize=high&bg-color=255%2C255%2C255&fit=cover&height=1200&width=960&auto=webp&format=pjpghttps://www.asics.co.in/media/catalog/product/1/0/1013a170_100_sr_rt_glb.jpg?optimize=high&bg-color=255%2C255%2C255&fit=cover&height=1200&width=960&auto=webp&format=pjpg">Add to Cart</button>
+                </div>
+            </div>
+            
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://www.asics.co.in/media/catalog/product/1/0/1013a170_500_sr_rt_glb.jpg?optimize=high&bg-color=255%2C255%2C255&fit=cover&height=1200&width=960&auto=webp&format=pjpg" alt="Nike Pegasus running shoes in blue and white colorway">
+                </div>
+                <div class="product-info">
+                    <h3>MEGABLAST</h3>
+                    <p>Unisex Running Shoes</p>
+                    <div class="product-price">MRP-24,999</div>
+                    <button class="add-to-cart" data-id="2" data-name="ASICS- MEGABLAST" data-price="120" data-image="https://www.asics.co.in/media/catalog/product/1/0/1013a170_500_sr_rt_glb.jpg?optimize=high&bg-color=255%2C255%2C255&fit=cover&height=1200&width=960&auto=webp&format=pjpg">Add to Cart</button>
+                </div>
+            </div>
+            
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://www.asics.co.in/media/catalog/product/1/2/1203a748_700_sr_rt_glb_1.jpg?optimize=high&bg-color=255%2C255%2C255&fit=cover&height=1200&width=960&auto=webp&format=pjpg" alt="Nike Dunk shoes in black and white colorway">
+                </div>
+                <div class="product-info">
+                    <h3> GEL-KINETIC FLUENT</h3>
+                    <p>Unisex Multistyle Shoes</p>
+                    <div class="product-price">MRP- 34,998</div>
+                    <button class="add-to-cart" data-id="3" data-name="GEL-KINETIC FLUENT" data-price="180" data-image="https://www.asics.co.in/media/catalog/product/1/2/1203a748_700_sr_rt_glb_1.jpg?optimize=high&bg-color=255%2C255%2C255&fit=cover&height=1200&width=960&auto=webp&format=pjpghttps://www.asics.co.in/media/catalog/product/1/2/1203a748_700_sr_rt_glb_1.jpg?optimize=high&bg-color=255%2C255%2C255&fit=cover&height=1200&width=960&auto=webp&format=pjpg">Add to Cart</button>
+                </div>
+            </div>
+            
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://www.asics.co.in/media/catalog/product/1/0/1011c030_001_sr_rt_glb.jpg?optimize=high&bg-color=255%2C255%2C255&fit=cover&height=1200&width=960&auto=webp&format=pjpg" alt="Nike React running shoes in green and white colorway">
+                </div>
+                <div class="product-info">
+                    <h3>GEL-NIMBUS 27 LUXE</h3>
+                    <p>MEN Running Shoes</p>
+                    <div class="product-price">MRP-23,997</div>
+                    <button class="add-to-cart" data-id="4" data-name="GEL-NIMBUS 27 LUXE" data-price="160" data-image="https://www.asics.co.in/media/catalog/product/1/0/1011c030_001_sr_rt_glb.jpg?optimize=high&bg-color=255%2C255%2C255&fit=cover&height=1200&width=960&auto=webp&format=pjpg">Add to Cart</button>
+                </div>
+            </div>
+            
+            <!-- Product 5 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://www.asics.co.in/media/catalog/product/1/0/1011c083_400_sr_rt_glb.jpg?optimize=high&bg-color=255%2C255%2C255&fit=cover&height=1200&width=960&auto=webp&format=pjpg" alt="Nike Air Force 1 shoes in orange and white colorway">
+                </div>
+                <div class="product-info">
+                    <h3>SONICBLAST</h3>
+                    <p>Men's Running Shoes</p>
+                    <div class="product-price">MRP-37,887</div>
+                    <button class="add-to-cart" data-id="5" data-name="ASICS-SONIBLAST" data-price="200" data-image="https://www.asics.co.in/media/catalog/product/1/0/1011c083_400_sr_rt_glb.jpg?optimize=high&bg-color=255%2C255%2C255&fit=cover&height=1200&width=960&auto=webp&format=pjpg">Add to Cart</button>
+                </div>
+            </div>
+            
+            <!-- Product 6 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://www.asics.co.in/media/catalog/product/1/2/1203a814_021_sr_rt_glb.jpg?optimize=high&bg-color=255%2C255%2C255&fit=cover&height=1200&width=960&auto=webp&format=pjpg" alt="Nike Blazer shoes in purple and white colorway">
+                </div>
+                <div class="product-info">
+                    <h3>INVINCIBLExGEL-NIMBUS</h3>
+                    <p>MENS Lifestyle Shoes</p>
+                    <div class="product-price">MRP-44,457</div>
+                    <button class="add-to-cart" data-id="6" data-name="INVINCIBLExGEL-NIMBUS" data-price="100" data-image="https://www.asics.co.in/media/catalog/product/1/2/1203a814_021_sr_rt_glb.jpg?optimize=high&bg-color=255%2C255%2C255&fit=cover&height=1200&width=960&auto=webp&format=pjpg">Add to Cart</button>
+                </div>
+            </div>
+            
+            <!-- Product 7 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://www.asics.co.in/media/catalog/product/1/2/1203a750_600_sr_rt_glb.jpg?optimize=high&bg-color=255%2C255%2C255&fit=cover&height=1200&width=960&auto=webp&format=pjpg" alt="Nike Metcon training shoes in pink and white colorway">
+                </div>
+                <div class="product-info">
+                    <h3>GEL-QUANTUM 360 I</h3>
+                    <p>Unisex Sportstyle Shoes</p>
+                    <div class="product-price">MRP-55,000</div>
+                    <button class="add-to-cart" data-id="7" data-name="GEL-QUATUM 360-I" data-price="130" data-image="https://www.asics.co.in/media/catalog/product/1/2/1203a750_600_sr_rt_glb.jpg?optimize=high&bg-color=255%2C255%2C255&fit=cover&height=1200&width=960&auto=webp&format=pjpg">Add to Cart</button>
+                </div>
+            </div>
+            
+            <!-- Product 8 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://www.asics.co.in/media/catalog/product/1/0/1011c083_750_sr_rt_glb.jpg?optimize=high&bg-color=255%2C255%2C255&fit=cover&height=1200&width=960&auto=webp&format=pjpg" alt="Nike Jordan basketball shoes in blue and white colorway">
+                </div>
+                <div class="product-info">
+                    <h3>GEL-NIMBUS 27 LUXE</h3>
+                    <p>Men Running Shoes</p>
+                    <div class="product-price">MRP-43,788</div>
+                    <button class="add-to-cart" data-id="8" data-name="GEL-NIMBUS 27 LUXE" data-price="125" data-image="https://www.asics.co.in/media/catalog/product/1/0/1011c083_750_sr_rt_glb.jpg?optimize=high&bg-color=255%2C255%2C255&fit=cover&height=1200&width=960&auto=webp&format=pjpg">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+            <!-- Product 9-->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://www.asics.co.in/media/catalog/product/1/0/1011c083_750_sr_rt_glb.jpg?optimize=high&bg-color=255%2C255%2C255&fit=cover&height=1200&width=960&auto=webp&format=pjpg" alt="Nike Jordan basketball shoes in blue and white colorway">
+                </div>
+                <div class="product-info">
+                    <h3>GEL-NIMBUS 27 LUXE</h3>
+                    <p>Men Running Shoes</p>
+                    <div class="product-price">MRP-43,788</div>
+                    <button class="add-to-cart" data-id="8" data-name="GEL-NIMBUS 27 LUXE" data-price="125" data-image="https://www.asics.co.in/media/catalog/product/1/0/1011c083_750_sr_rt_glb.jpg?optimize=high&bg-color=255%2C255%2C255&fit=cover&height=1200&width=960&auto=webp&format=pjpg">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+            <!-- Product 10-->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://www.asics.co.in/media/catalog/product/1/0/1011c083_750_sr_rt_glb.jpg?optimize=high&bg-color=255%2C255%2C255&fit=cover&height=1200&width=960&auto=webp&format=pjpg" alt="Nike Jordan basketball shoes in blue and white colorway">
+                </div>
+                <div class="product-info">
+                    <h3>GEL-NIMBUS 27 LUXE</h3>
+                    <p>Men Running Shoes</p>
+                    <div class="product-price">MRP-43,788</div>
+                    <button class="add-to-cart" data-id="8" data-name="GEL-NIMBUS 27 LUXE" data-price="125" data-image="https://www.asics.co.in/media/catalog/product/1/0/1011c083_750_sr_rt_glb.jpg?optimize=high&bg-color=255%2C255%2C255&fit=cover&height=1200&width=960&auto=webp&format=pjpg">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3><b><i>Products</i></b></h3>
+                <ul>
+                    <li><a href="#"><i>Running Shoes</i></a></li>
+                    <li><a href="#"><i>Basketball Shoes</i></a></li>
+                    <li><a href="#"><i>Lifestyle Shoes</i></a></li>
+                    <li><a href="#"><i>Training Shoes</i></a></li>
+                    <li><a href="#"><i>Limited Edition</i></a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3><b><i>Support</i></b></h3>
+                <ul>
+                    <li><a href="#"><i>help center</i></a></li>
+                    <li><a href="#"><i>Order Status</i></a></li>
+                    <li><a href="#"><i>Shipping & Returns</i></a></li>
+                    <li><a href="#"><i>Size Guide</i></a></li>
+                    <li><a href="#"><i>Contact Us</i></a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3><b><i>About Asics</i></b></h3>
+                <ul>
+                    <li><a href="#"><i>News</i></a></li>
+                    <li><a href="#"><i>Careers</i></a></li>
+                    <li><a href="#"><i>Sustainability</i></a></li>
+                    <li><a href="#"><i>Investors</i></a></li>
+                    <li><a href="#"><i>Purpose</i></a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3><b><i>Join Us</i></b></h3>
+                <p><i>Sign up for emails to get first access to new products, special offers and more.</i></p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025, ASICS, COPYRIGHT RESERVED.</p>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="overlay" id="overlay"></div>
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="close-cart" id="close-cart"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be added here dynamically -->
+            <p class="empty-cart-message">Your cart is empty</p>
+        </div>
+        <div class="cart-total">
+            <span>Total:</span>
+            <span id="cart-total-price">$0.00</span>
+        </div>
+        <a href="#" class="checkout-btn">Proceed to Checkout</a>
+    </div>
+    <!-- Add this inside <body> after your existing cart modal -->
+
+<!-- Checkout Modal -->
+<div class="overlay" id="checkout-overlay"></div>
+<div class="checkout-modal" id="checkout-modal" aria-modal="true" role="dialog" aria-labelledby="checkout-title" aria-hidden="true">
+  <div class="checkout-content">
+    <button class="close-checkout" id="close-checkout" aria-label="Close checkout modal">&times;</button>
+    <h2 id="checkout-title">Checkout</h2>
+
+    <!-- Step 1: Shipping -->
+    <form id="shipping-form" class="checkout-form active" novalidate>
+      <h3>DETAIL</h3>
+      <label for="ship-firstname">First Name *</label>
+      <input type="text" id="ship-firstname" name="ship-firstname" required />
+      
+      <label for="ship-lastname">Last Name *</label>
+      <input type="text" id="ship-lastname" name="ship-lastname" required />
+      
+      <label for="ship-email">Email *</label>
+      <input type="email" id="ship-email" name="ship-email" required />
+      
+      <label for="ship-address">Address *</label>
+      <input type="text" id="ship-address" name="ship-address" required />
+      
+      <label for="ship-city">City *</label>
+      <input type="text" id="ship-city" name="ship-city" required />
+      
+      <label for="ship-zip">ZIP Code *</label>
+      <input type="text" id="ship-zip" name="ship-zip" required pattern="^[0-9A-Za-z\s-]{3,10}$" />
+      
+      <label for="ship-country">Country *</label>
+      <input type="text" id="ship-country" name="ship-country" required />
+      
+      <div class="checkout-buttons">
+        <button type="button" id="shipping-next" class="btn-submit">Next</button>
+      </div>
+    </form>
+
+    <!-- Step 2: Payment -->
+    <form id="payment-form" class="checkout-form" novalidate>
+      <h3>Payment Process</h3>
+      <label for="card-name">Name on Card *</label>
+      <input type="text" id="card-name" name="card-name" required/>
+      
+      <label for="card-number">Card Number *</label>
+      <input type="text" id="card-number" name="card-number" required pattern="^\d{13,19}$" placeholder="1234-5678-9012-3456" />
+      
+      <label for="card-expiry">Expiry Date (MM/YY) *</label>
+      <input type="text" id="card-expiry" name="card-expiry" required pattern="^(0[1-9]|1[0-2])\/?([0-9]{2})$" placeholder="MM/YY" />
+      
+      <label for="card-cvv">CVV *</label>
+      <input type="text" id="card-cvv" name="card-cvv" required pattern="^\d{3,4}$" placeholder="123" />
+      
+      <div class="checkout-buttons">
+        <button type="button" id="payment-back" class="btn-back">Back</button>
+        <button type="submit" class="btn-submit">Pay Now</button>
+      </div>
+    </form>
+
+    <!-- Step 3: Confirmation -->
+    <div id="confirmation" class="checkout-form confirmation" role="alert" style="display:none;">
+      <h3>Order Confirmed!</h3>
+      <p>Thank you for your purchase. A confirmation email has been sent.</p>
+      <button id="confirmation-close" class="btn-submit">Close</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Checkout Modal Styles */
+  .overlay#checkout-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1100;
+  }
+  .overlay#checkout-overlay.open {
+    display: block;
+  }
+  .checkout-modal {
+    display: none;
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    width: 90%;
+    max-width: 480px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    z-index: 1101;
+    padding: 2rem 2.5rem 3rem;
+  }
+  .checkout-modal.active {
+    display: block;
+  }
+  .checkout-content {
+    position: relative;
+  }
+  .close-checkout {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    color: #333;
+  }
+  .checkout-modal h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    color: #363132;
+  }
+  .checkout-form {
+    display: none;
+    flex-direction: column;
+  }
+  .checkout-form.active {
+    display: flex;
+  }
+  .checkout-form h3 {
+    margin-bottom: 1rem;
+    color: #111;
+  }
+  .checkout-form label {
+    margin-top: 1rem;
+    font-weight: 600;
+    color: #444;
+  }
+  .checkout-form input {
+    margin-top: 0.3rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1.5px solid #ccc;
+    transition: border-color 0.3s ease;
+  }
+  .checkout-form input:focus {
+    outline: none;
+    border-color: #111010;
+    box-shadow: 0 0 6px #000000;
+  }
+  .checkout-buttons {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+  .btn-submit {
+    background-color: #252424;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.8rem;
+    border-radius: 30px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .btn-submit:hover {
+    background-color: #d62828;
+  }
+  .btn-back {
+    background-color: transparent;
+    border: 2px solid #e63946;
+    color: #e63946;
+    padding: 0.75rem 1.8rem;
+    border-radius: 30px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  .btn-back:hover {
+    background-color: #e63946;
+    color: white;
+  }
+  .confirmation {
+    text-align: center;
+    color: #2a7a2a;
+  }
+  .confirmation h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  .confirmation p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+</style>
+
+<script>
+  // Elements
+  const checkoutModal = document.getElementById('checkout-modal');
+  const checkoutOverlay = document.getElementById('checkout-overlay');
+  const closeCheckoutBtn = document.getElementById('close-checkout');
+  const shippingForm = document.getElementById('shipping-form');
+  const paymentForm = document.getElementById('payment-form');
+  const confirmationDiv = document.getElementById('confirmation');
+  const shippingNextBtn = document.getElementById('shipping-next');
+  const paymentBackBtn = document.getElementById('payment-back');
+  const confirmationCloseBtn = document.getElementById('confirmation-close');
+  const proceedCheckoutBtn = document.querySelector('.checkout-btn');
+
+  // Show checkout modal
+  proceedCheckoutBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (cart.length === 0) {
+      alert('Your cart is empty!');
+      return;
+    }
+    openCheckout();
+  });
+
+  function openCheckout() {
+    checkoutModal.classList.add('active');
+    checkoutOverlay.classList.add('open');
+    showStep('shipping');
+  }
+
+  function closeCheckout() {
+    checkoutModal.classList.remove('active');
+    checkoutOverlay.classList.remove('open');
+    resetCheckout();
+  }
+
+  closeCheckoutBtn.addEventListener('click', closeCheckout);
+  checkoutOverlay.addEventListener('click', closeCheckout);
+
+  // Show step function
+  function showStep(step) {
+    shippingForm.classList.remove('active');
+    paymentForm.classList.remove('active');
+    confirmationDiv.style.display = 'none';
+
+    if (step === 'shipping') {
+      shippingForm.classList.add('active');
+    } else if (step === 'payment') {
+      paymentForm.classList.add('active');
+    } else if (step === 'confirmation') {
+      confirmationDiv.style.display = 'block';
+    }
+  }
+
+  // Validate form helper
+  function validateForm(form) {
+    const inputs = form.querySelectorAll('input[required]');
+    for (let input of inputs) {
+      if (!input.value.trim()) {
+        alert(`Please fill the ${input.previousElementSibling.textContent.replace('*','').trim()} field.`);
+        input.focus();
+        return false;
+      }
+      if (input.pattern) {
+        const regex = new RegExp(input.pattern);
+        if (!regex.test(input.value.trim())) {
+          alert(`Please enter a valid ${input.previousElementSibling.textContent.replace('*','').trim()}.`);
+          input.focus();
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  // Shipping Next button
+  shippingNextBtn.addEventListener('click', () => {
+    if (validateForm(shippingForm)) {
+      showStep('payment');
+    }
+  });
+
+  // Payment Back button
+  paymentBackBtn.addEventListener('click', () => {
+    showStep('shipping');
+  });
+
+  // Payment form submit
+  paymentForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (validateForm(paymentForm)) {
+      // Simulate payment processing delay
+      paymentForm.querySelector('button[type="submit"]').disabled = true;
+      paymentForm.querySelector('button[type="submit"]').textContent = 'Processing...';
+
+      setTimeout(() => {
+        paymentForm.querySelector('button[type="submit"]').disabled = false;
+        paymentForm.querySelector('button[type="submit"]').textContent = 'Pay Now';
+
+        showStep('confirmation');
+        clearCart();
+      }, 1500);
+    }
+  });
+
+  // Confirmation close button
+  confirmationCloseBtn.addEventListener('click', () => {
+    closeCheckout();
+  });
+
+  // Clear cart function
+  function clearCart() {
+    cart = [];
+    updateCart();
+  }
+</script>
+
+    <script>
+        // Cart functionality
+        let cart = [];
+        const cartIcon = document.getElementById('cart-icon');
+        const cartModal = document.getElementById('cart-modal');
+        const overlay = document.getElementById('overlay');
+        const closeCart = document.getElementById('close-cart');
+        const cartItems = document.getElementById('cart-items');
+        const cartTotalPrice = document.getElementById('cart-total-price');
+        const cartCount = document.querySelector('.cart-count');
+        
+        // Add to cart buttons
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        
+        // Open cart
+        cartIcon.addEventListener('click', () => {
+            cartModal.classList.add('open');
+            overlay.classList.add('open');
+        });
+        
+        // Close cart
+        closeCart.addEventListener('click', () => {
+            cartModal.classList.remove('open');
+            overlay.classList.remove('open');
+        });
+        
+        overlay.addEventListener('click', () => {
+            cartModal.classList.remove('open');
+            overlay.classList.remove('open');
+        });
+        
+        // Add to cart functionality
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const id = button.getAttribute('data-id');
+                const name = button.getAttribute('data-name');
+                const price = parseFloat(button.getAttribute('data-price'));
+                const image = button.getAttribute('data-image');
+                
+                // Check if product already in cart
+                const existingProduct = cart.find(item => item.id === id);
+                
+                if (existingProduct) {
+                    existingProduct.quantity += 1;
+                } else {
+                    cart.push({
+                        id,
+                        name,
+                        price,
+                        image,
+                        quantity: 1
+                    });
+                }
+                
+                updateCart();
+                
+                // Show cart after adding product
+                cartModal.classList.add('open');
+                overlay.classList.add('open');
+            });
+        });
+        
+        // Update cart UI
+        function updateCart() {
+            // Update cart count
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            // Clear cart items
+            cartItems.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="empty-cart-message">Your cart is empty</p>';
+                cartTotalPrice.textContent = '$0.00';
+                return;
+            }
+            
+            // Add items to cart
+            let totalPrice = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                totalPrice += itemTotal;
+                
+                const cartItemElement = document.createElement('div');
+                cartItemElement.classList.add('cart-item');
+                cartItemElement.innerHTML = `
+                    <div class="cart-item-image">
+                        <img src="${item.image}" alt="${item.name}">
+                    </div>
+                    <div class="cart-item-details">
+                        <h4>${item.name}</h4>
+                        <div class="cart-item-price">$${item.price} x ${item.quantity}</div>
+                    </div>
+                    <button class="cart-item-remove" data-id="${item.id}">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                `;
+                
+                cartItems.appendChild(cartItemElement);
+                
+                // Add event listener to remove button
+                const removeButton = cartItemElement.querySelector('.cart-item-remove');
+                removeButton.addEventListener('click', () => {
+                    removeFromCart(item.id);
+                });
+            });
+            
+            // Update total price
+            cartTotalPrice.textContent = `$${totalPrice.toFixed(2)}`;
+        }
+        
+        // Remove from cart
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCart();
+        }
+        
+        // Search functionality
+        const searchInput = document.querySelector('.search-box input');
+        const productCards = document.querySelectorAll('.product-card');
+        
+        searchInput.addEventListener('input', () => {
+            const searchTerm = searchInput.value.toLowerCase();
+            
+            productCards.forEach(card => {
+                const productName = card.querySelector('h3').textContent.toLowerCase();
+                
+                if (productName.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+        
+        // Filter functionality
+        const categoryFilter = document.querySelectorAll('.filter-options select')[0];
+        
+        categoryFilter.addEventListener('change', () => {
+            const selectedCategory = categoryFilter.value;
+            
+            productCards.forEach(card => {
+                const productCategory = card.querySelector('p').textContent;
+                
+                if (selectedCategory === 'All Categories' || productCategory.includes(selectedCategory)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
